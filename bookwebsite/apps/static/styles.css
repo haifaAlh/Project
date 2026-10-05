@@ -17,3 +17,99 @@
 .topnav a.active{
   color: #008CBA;
 }
+
+
+.link-box {
+    display: block;
+    text-align: center;
+    padding: 15px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    text-decoration: underline;
+}
+
+/* الشريط الأول (أخضر فاتح ورابط أحمر) */
+.link1 {
+    background-color: #a2f3b3;
+    color: red;
+}
+
+/* الشريط الثاني (رمادي غامق ورابط أصفر) */
+.link2 {
+    background-color: #555555;
+    color: #ffff55;
+}
+
+/* الشريط الثالث (أسود ورابط أبيض) */
+.link3 {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* إضافة تغيير التنسيق عند التفاعل (States: hover, visited, active) */
+.link-box:hover {
+    opacity: 0.8;
+}
+.link-box:active {
+    font-weight: bold;
+}
+
+.formatting-header {
+    background-color: #f5f5dc;
+    color: #2e7d32;
+    padding: 10px;
+    font-size: 28px;
+}
+
+.listing-header {
+    background-color: #5b9aa0;
+    color: white;
+    padding: 10px 15px;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+/* Table 1 Styles */
+.table1-container {
+    text-align: center;
+}
+
+.table1 {
+    margin: 0 auto;
+    border-collapse: collapse;
+    border: 2px solid black;
+}
+
+.table1 th, .table1 td {
+    border: 1px solid black;
+    padding: 4px 12px;
+    text-align: center;
+}
+
+/* Table 2 Styles */
+.table2-container {
+    text-align: center;
+}
+
+.table2 {
+    margin: 0 auto;
+    border-collapse: collapse;
+    border: 1px solid black;
+    width: 80%;
+}
+
+.table2 th, .table2 td {
+    border: 1px solid black;
+    padding: 6px;
+    text-align: center;
+}
+
+.table2 .img-cell img {
+    width: 250px;
+    height: auto;
+    display: block;
+}
+
+.table2 .header-cell {
+    font-size: 18px;
+}

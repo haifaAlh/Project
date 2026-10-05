@@ -29,3 +29,15 @@ def viewbook(request, bookId):
 def aboutus(request):
     return render(request, 'bookmodule/aboutus.html')
 
+def task1(request):
+    return render(request, 'bookmodule/task1.html')
+
+def task2(request):
+    return render(request, 'bookmodule/task2.html')
+
+def task3(request):
+    return render(request, 'bookmodule/task3.html')
+
+def task4(request):
+    return render(request, 'bookmodule/task4.html')
+

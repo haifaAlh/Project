@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 4 - Tables</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+
+    <!-- Table 1 -->
+    <div class="table1-container">
+        <h3>Table 1: Table of Fruits and Their Prices</h3>
+        <table class="table1">
+            <thead>
+                <tr>
+                    <th>Fruit</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Apple</td>
+                    <td>$0.25</td>
+                </tr>
+                <tr>
+                    <td>Orange</td>
+                    <td>$0.50</td>
+                </tr>
+                <tr>
+                    <td>Banana</td>
+                    <td>$1.00</td>
+                </tr>
+                <tr>
+                    <td>Pineapple</td>
+                    <td>$2.00</td>
+                </tr>
+                <tr>
+                    <th>Total</th>
+                    <th>$3.75</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <br><br>
+
+    <!-- Table 2 -->
+    <div class="table2-container">
+        <h3>Table 2: A more complex sample table</h3>
+        <table class="table2">
+            <tr>
+                <td rowspan="2" class="img-cell">
+                    <img src="{% static 'desert.jpg' %}" alt="Desert">
+                </td>
+                <td colspan="4" class="header-cell">
+                    <strong>Camelid comparison</strong><br>
+                    <strong>Approximate as of 6/2011</strong>
+                </td>
+            </tr>
+            <tr>
+                <th># of humps</th>
+                <th>Indigenous region</th>
+                <th>Spits?</th>
+                <th>Produces wool?</th>
+            </tr>
+            <tr>
+                <th>Dromedary</th>
+                <td>1</td>
+                <td>Arabian Peninsula</td>
+                <td>Yes</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <th>Camels (bactrian)</th>
+                <td>2</td>
+                <td>Africa/Asia</td>
+                <td>Yes</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <th>Llamas</th>
+                <td>1</td>
+                <td>Andes Mountains</td>
+                <td>Yes</td>
+                <td>Yes</td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>
