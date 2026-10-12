@@ -28,19 +28,19 @@
     text-decoration: underline;
 }
 
-/* الشريط الأول (أخضر فاتح ورابط أحمر) */
+/* الشريط الأول  */
 .link1 {
     background-color: #a2f3b3;
     color: red;
 }
 
-/* الشريط الثاني (رمادي غامق ورابط أصفر) */
+/* الشريط الثاني  */
 .link2 {
     background-color: #555555;
     color: #ffff55;
 }
 
-/* الشريط الثالث (أسود ورابط أبيض) */
+/* الشريط الثالث  */
 .link3 {
     background-color: #000000;
     color: #ffffff;

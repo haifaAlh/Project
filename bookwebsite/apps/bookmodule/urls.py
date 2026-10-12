@@ -10,5 +10,6 @@ urlpatterns = [
     path('html5/text/formatting', views.task2, name='task2'),
     path('html5/listing', views.task3, name='task3'),
     path('html5/tables', views.task4, name='task4'),
+    path('search', views.searchBooks, name='books.search'),
 
 ]
