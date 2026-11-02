@@ -1,0 +1,35 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %} Lab 8 - Task 6 {% endblock title %}
+
+{% block content %}
+<div style="margin: 20px;">
+    <h2>Students and their Addresses</h2>
+    {% if students %}
+        <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+            <thead>
+                <tr style="background-color: #f2f2f2;">
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Address (City)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td>{{ student.id }}</td>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.address.city }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No students found in the database. (Make sure to add some via Django Admin or shell)</p>
+    {% endif %}
+    <br>
+</div>
+{% endblock content %}

@@ -1,0 +1,33 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %} Lab 8 - Task 7 {% endblock title %}
+
+{% block content %}
+<div style="margin: 20px;">
+    <h2>Cities and Number of Students</h2>
+    {% if cities %}
+        <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; width: 60%;">
+            <thead>
+                <tr style="background-color: #f2f2f2;">
+                    <th>City ID</th>
+                    <th>City Name</th>
+                    <th>Total Students</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for city in cities %}
+                <tr>
+                    <td>{{ city.id }}</td>
+                    <td>{{ city.city }}</td>
+                    <td>{{ city.student_count }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No cities found.</p>
+    {% endif %}
+    <br>
+</div>
+{% endblock content %}
