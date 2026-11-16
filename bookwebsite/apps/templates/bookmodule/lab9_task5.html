@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 5 - Publishers with Highly Rated Books</title>
+    <style>
+        body { font-family: Arial, sans-serif; direction: ltr; text-align: left; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background-color: #f2f2f2; }
+        ul { text-align: left; margin: 0; padding-left: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Task 5: Publishers with Count and Details of Highly Rated Books (Rating >= 4)</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Publisher Name</th>
+                <th>Highly Rated Books Count</th>
+                <th>Books Names & Quantities</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for publisher in publishers %}
+            <tr>
+                <td>{{ publisher.name }}</td>
+                <td>{{ publisher.high_rated_count }}</td>
+                <td>
+                    <ul>
+                        {% for book in publisher.books.all %}
+                            {% if book.rating >= 4 %}
+                                <li>{{ book.title }} (Quantity: {{ book.quantity }}, Rating: {{ book.rating }})</li>
+                            {% endif %}
+                        {% empty %}
+                            <li>No books available</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

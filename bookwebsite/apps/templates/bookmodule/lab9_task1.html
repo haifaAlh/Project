@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 1 - Percentage Availability</title>
+    <style>
+        body { font-family: Arial, sans-serif; direction: ltr; text-align: left; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Task 1: Book Availability Percentage</h1>
+    <p>Total Books Quantity in Stock: <strong>{{ total_quantity }}</strong></p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Book Title</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Availability Percentage (%)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in Books %}
+            <tr>
+                <td>{{ book.title }}</td>
+                <td>{{ book.price }}</td>
+                <td>{{ book.quantity }}</td>
+                <td>{{ book.availability_percentage|floatformat:2 }}%</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

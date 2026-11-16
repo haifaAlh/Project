@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 4 - Book Prices Statistics per Publisher</title>
+    <style>
+        body { font-family: Arial, sans-serif; direction: ltr; text-align: left; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Task 4: Average, Min, and Max Price of Books per Publisher</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Publisher Name</th>
+                <th>Location</th>
+                <th>Average Price</th>
+                <th>Minimum Price</th>
+                <th>Maximum Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for publisher in publishers %}
+            <tr>
+                <td>{{ publisher.name }}</td>
+                <td>{{ publisher.location }}</td>
+                <td>{{ publisher.avg_price|default:0|floatformat:2 }}</td>
+                <td>{{ publisher.min_price|default:0|floatformat:2 }}</td>
+                <td>{{ publisher.max_price|default:0|floatformat:2 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,9 +1,7 @@
 from django.shortcuts import render
-
-from .models import Book,Student, Address
-
+from .models import Book, Student, Address, Books, Publisher  # أضفنا books أو تأكدت من وجودها حسب اسم الموديل لديك
 from django.db.models import Q
-from django.db.models import Count, Sum, Avg, Max, Min
+from django.db.models import Count, Sum, Avg, Max, Min, F, FloatField
 
 def index(request): 
     name = request.GET.get("name") or "world!"
@@ -110,3 +108,75 @@ def lab8_task6(request):
 def lab8_task7(request):
     cities = Address.objects.annotate(student_count=Count('student'))
     return render(request, 'bookmodule/lab8_task7.html', {'cities': cities})
+
+def lab9_task1(request):
+    # حساب إجمالي كمية جميع الكتب في القاعدة
+    total_quantity = Books.objects.aggregate(total=Sum('quantity'))['total'] or 1
+    
+    # استعلام الكتب مع إضافة حقل مؤقت (transient field) لنسبة التوفر
+    # المعادلة: (quantity / total_quantity) * 100
+    all_books = Books.objects.annotate(
+        availability_percentage=F('quantity') * 100.0 / total_quantity
+    )
+    
+    context = {
+        'Books': all_books,
+        'total_quantity': total_quantity
+    }
+    return render(request, 'bookmodule/lab9_task1.html', context)
+
+def lab9_task2(request):
+    # استعلام جميع الناشرين مع حساب مجموع كميات الكتب لكل ناشر
+    publishers = Publisher.objects.annotate(total_stock=Sum('books__quantity'))
+    
+    context = {
+        'publishers': publishers,
+    }
+    return render(request, 'bookmodule/lab9_task2.html', context)
+
+def lab9_task3(request):
+    # استعلام الناشرين مع إيجاد تاريخ النشر لأقدم كتاب لكل ناشر باستخدام Min على حقل pubdate
+    publishers = Publisher.objects.annotate(oldest_book_date=Min('books__pubdate'))
+    
+    context = {
+        'publishers': publishers,
+    }
+    return render(request, 'bookmodule/lab9_task3.html', context)
+
+def lab9_task4(request):
+    # استعلام الناشرين مع حساب متوسط وأقل وأعلى سعر للكتب الخاصة بكل ناشر
+    publishers = Publisher.objects.annotate(
+        avg_price=Avg('books__price'),
+        min_price=Min('books__price'),
+        max_price=Max('books__price')
+    )
+    
+    context = {
+        'publishers': publishers,
+    }
+    return render(request, 'bookmodule/lab9_task4.html', context)
+
+def lab9_task5(request):
+    # استخدام books بالاسم الصحيح للعلاقة العكسية
+    publishers = Publisher.objects.annotate(
+        high_rated_count=Count('books', filter=Q(books__rating__gte=4))
+    ).prefetch_related('books')
+    
+    context = {
+        'publishers': publishers,
+    }
+    return render(request, 'bookmodule/lab9_task5.html', context)
+
+def lab9_task6(request):
+    # استعلام الناشرين مع حساب عدد الكتب التي تحقق الشروط المحددة
+    publishers = Publisher.objects.annotate(
+        filtered_books_count=Count(
+            'books', 
+            filter=Q(books__price__gt=50) & Q(books__quantity__lt=5) & Q(books__quantity__gte=1)
+        )
+    )
+    
+    context = {
+        'publishers': publishers,
+    }
+    return render(request, 'bookmodule/lab9_task6.html', context)
